@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea - Quizzes de Inteligencia Emocional</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <div class="encabezado-principal__contenedor contenedor">
+            <div class="encabezado-principal__logo">
+                <img src="img/aurea-logo.png" alt="Logo de Aurea" class="encabezado-principal__logo-imagen">
+                <span class="encabezado-principal__logo-texto">Aurea</span>
+            </div>
+            <nav class="navegacion-principal">
+                <ul class="navegacion-principal__lista">
+                    <li class="navegacion-principal__item"><a href="index.html#inicio" class="navegacion-principal__enlace">Inicio</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#analisis-etr" class="navegacion-principal__enlace">Análisis ETR</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#importancia" class="navegacion-principal__enlace">Importancia</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#mitos" class="navegacion-principal__enlace">Mitos y Realidades</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#desarrollo-beneficios" class="navegacion-principal__enlace">Desarrollo y Beneficios</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#ie-educacion" class="navegacion-principal__enlace">IE en la Educación</a></li>
+                    <li class="navegacion-principal__item"><a href="#quizzes" class="navegacion-principal__enlace">Quizzes</a></li>
+                </ul>
+            </nav>
+            <button class="encabezado-principal__boton-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="seccion-principal-quiz">
+        <div class="seccion-principal-quiz__contenedor contenedor">
+            <h1 class="seccion-principal-quiz__titulo">Desafío de Inteligencia Emocional Educativa</h1>
+            <p class="seccion-principal-quiz__subtitulo">Pon a prueba tu comprensión sobre la importancia de la IE en el aula.</p>
+
+            <div class="quiz-contenedor">
+                <div id="pregunta-actual" class="quiz-pregunta">
+                    <p class="quiz-pregunta__numero">Pregunta <span id="numero-pregunta">1</span> de 10</p>
+                    <h2 id="texto-pregunta" class="quiz-pregunta__texto"></h2>
+                    <div id="opciones-pregunta" class="quiz-opciones">
+                        </div>
+                    <div id="retroalimentacion" class="quiz-retroalimentacion">
+                        </div>
+                </div>
+                <div class="quiz-controles">
+                    <button id="boton-siguiente" class="boton--primario quiz-controles__boton">Siguiente Pregunta</button>
+                    <button id="boton-reiniciar" class="boton--secundario quiz-controles__boton quiz-controles__boton--oculto">Reiniciar Quiz</button>
+                </div>
+                <div id="resultado-final" class="quiz-resultado quiz-resultado--oculto">
+                    <h2 class="quiz-resultado__titulo">¡Quiz Finalizado!</h2>
+                    <p class="quiz-resultado__texto">Tu puntuación es: <span id="puntuacion-final"></span></p>
+                    <p id="mensaje-resultado" class="quiz-resultado__mensaje"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pie-pagina-principal">
+        <div class="pie-pagina-principal__contenedor contenedor">
+            <p class="pie-pagina-principal__texto">
+                &copy; 2025 Aurea. Todos los derechos reservados.
+            </p>
+            <p class="pie-pagina-principal__texto pie-pagina-principal__texto--creadores">
+                Proyecto desarrollado por: Luiselis, Nicolás y Carlos
+            </p>
+            <p class="pie-pagina-principal__texto pie-pagina-principal__texto--institucion">
+                Estudiantes de Quinto Año de Telemática de la E.T. "Máximo Toro"
+            </p>
+            <div class="pie-pagina-principal__redes-sociales">
+                <a href="#" class="pie-pagina-principal__enlace-social" aria-label="Facebook"><img src="img/icon-facebook.svg" alt="Facebook"></a>
+                <a href="#" class="pie-pagina-principal__enlace-social" aria-label="Twitter"><img src="img/icon-twitter.svg" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/quiz.js"></script>
+    <script>
+        // Script para el menú responsive (repite para esta página)
+        document.addEventListener('DOMContentLoaded', () => {
+            const botonMenu = document.querySelector('.encabezado-principal__boton-menu');
+            const navegacionPrincipal = document.querySelector('.navegacion-principal');
+            const enlacesNav = document.querySelectorAll('.navegacion-principal__enlace');
+
+            botonMenu.addEventListener('click', () => {
+                navegacionPrincipal.classList.toggle('navegacion-principal--abierto');
+                botonMenu.classList.toggle('encabezado-principal__boton-menu--activo');
+            });
+
+            enlacesNav.forEach(enlace => {
+                enlace.addEventListener('click', () => {
+                    if (navegacionPrincipal.classList.contains('navegacion-principal--abierto')) {
+                        navegacionPrincipal.classList.remove('navegacion-principal--abierto');
+                        botonMenu.classList.remove('encabezado-principal__boton-menu--activo');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

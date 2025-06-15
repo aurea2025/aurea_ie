@@ -1,0 +1,733 @@
+/* Variables CSS para facilitar el cambio de colores */
+:root {
+    --color-primario: #1C6758; /* Verde azulado oscuro */
+    --color-secundario: #3D8361; /* Un tono más claro para contrastes */
+    --color-acento: #6C5B7B; /* Un color de acento si se desea */
+    --color-texto-claro: #F6F6F6;
+    --color-texto-oscuro: #333333;
+    --color-fondo-claro: #F6F6F6;
+    --color-fondo-oscuro: #1C6758; /* Mismo que primario para secciones oscuras */
+    --fuente-principal: 'Montserrat', sans-serif;
+    --altura-encabezado: 80px; /* Altura del encabezado */
+}
+
+/* Base y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    line-height: 1.6;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-fondo-claro);
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Para evitar espacio extra debajo de las imágenes */
+}
+
+/* Clases Generales / Utilidades */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Botones */
+.boton--primario {
+    display: inline-block;
+    background-color: var(--color-secundario);
+    color: var(--color-texto-claro);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.boton--primario:hover {
+    background-color: #336B50; /* Tono más oscuro al pasar el mouse */
+}
+
+.boton--secundario {
+    display: inline-block;
+    background-color: var(--color-texto-claro);
+    color: var(--color-primario);
+    padding: 12px 25px;
+    border: 2px solid var(--color-primario);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.boton--secundario:hover {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+}
+
+/* Secciones con fondo oscuro, claro y secundario */
+.seccion--fondo-oscuro {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+}
+
+.seccion--fondo-claro {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro);
+}
+
+.seccion--fondo-secundario {
+    background-color: var(--color-secundario); /* Usando el color secundario de tus variables */
+    color: var(--color-texto-claro); /* Texto claro sobre este fondo */
+}
+
+/* Cuadrilla de contenido */
+.cuadrilla-contenido {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr; /* Por defecto una columna */
+    padding-top: 20px;
+}
+
+/* Para pantallas medianas y grandes, la cuadrilla de contenido tendrá más columnas */
+@media (min-width: 768px) {
+    .cuadrilla-contenido {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* ENCABEZADO (encabezado-principal) */
+.encabezado-principal {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.encabezado-principal__contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.encabezado-principal__logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-texto-claro);
+}
+
+.encabezado-principal__logo-imagen {
+    height: 40px; /* Tamaño del logo */
+    margin-right: 10px;
+}
+
+/* Navegación (navegacion-principal) */
+.navegacion-principal__lista {
+    display: flex;
+}
+
+.navegacion-principal__item {
+    margin-left: 30px;
+}
+
+.navegacion-principal__enlace {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navegacion-principal__enlace:hover {
+    color: var(--color-secundario);
+}
+
+/* Botón de menú (para móviles) */
+.encabezado-principal__boton-menu {
+    display: none; /* Oculto por defecto en desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001; /* Asegura que esté por encima de la navegación cuando esté abierta */
+}
+
+.encabezado-principal__boton-menu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-texto-claro);
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Animación del icono de menú para 'x' */
+.encabezado-principal__boton-menu--activo span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.encabezado-principal__boton-menu--activo span:nth-child(2) {
+    opacity: 0;
+}
+.encabezado-principal__boton-menu--activo span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* SECCIÓN PRINCIPAL (seccion-principal) */
+.seccion-principal {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/fondo-principal.jpg') no-repeat center center/cover;
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 150px 0; /* Más espacio en la parte superior e inferior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--altura-encabezado)); /* Altura de la vista menos el encabezado */
+}
+
+.seccion-principal__titulo {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.seccion-principal__subtitulo {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seccion-principal__boton {
+    font-size: 1.1em;
+    padding: 15px 35px;
+}
+
+/* SECCIÓN DE INFORMACIÓN (seccion-informacion) */
+.seccion-informacion {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.seccion-informacion__titulo {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: inherit; /* Hereda el color del padre (fondo oscuro/claro) */
+}
+
+.seccion-informacion__descripcion {
+    font-size: 1.2em;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+}
+
+.seccion-informacion__contenido .cuadrilla-contenido__item {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil para items en secciones oscuras */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.seccion-informacion.seccion--fondo-claro .seccion-informacion__contenido .cuadrilla-contenido__item {
+     background-color: #fff; /* Fondo blanco para items en secciones claras */
+     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* ESTILO PARA CUADRILLA EN FONDO SECUNDARIO (para la sección del ETR) */
+.seccion-informacion.seccion--fondo-secundario .seccion-informacion__contenido .cuadrilla-contenido__item {
+    background-color: rgba(255, 255, 255, 0.15); /* Un poco más opaco para contraste */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+.seccion-informacion__contenido .cuadrilla-contenido__subtitulo {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: inherit;
+}
+
+.seccion-informacion__contenido .cuadrilla-contenido__texto,
+.seccion-informacion__contenido p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.seccion-informacion__contenido ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin-top: 10px;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+.seccion-informacion__contenido ul li {
+    margin-bottom: 8px;
+}
+
+/* SECCIÓN DE IMAGEN (seccion-imagen) */
+.seccion-imagen {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Altura fija para la imagen */
+    overflow: hidden; /* Asegura que la imagen no se salga */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccion-imagen__imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre el área manteniendo la relación de aspecto */
+    filter: brightness(0.6); /* Oscurece la imagen ligeramente */
+    transition: filter 0.3s ease;
+}
+
+.seccion-imagen:hover .seccion-imagen__imagen {
+    filter: brightness(0.5); /* Se oscurece más al pasar el mouse */
+}
+
+.seccion-imagen__superposicion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Overlay semitransparente oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.seccion-imagen__leyenda {
+    font-size: 2.5em;
+    color: var(--color-texto-claro);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    max-width: 800px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* SECCIÓN DE LLAMADA A LA ACCIÓN (seccion-llamada-accion) */
+.seccion-llamada-accion {
+    background-color: var(--color-secundario); /* Un tono de verde azulado más claro */
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 100px 0;
+}
+
+.seccion-llamada-accion__titulo {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.seccion-llamada-accion__texto {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seccion-llamada-accion__boton {
+    font-size: 1.1em;
+    padding: 15px 40px;
+}
+
+/* PIE DE PÁGINA PRINCIPAL (pie-pagina-principal) */
+.pie-pagina-principal {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.pie-pagina-principal__contenedor {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;
+    justify-content: center;
+}
+
+.pie-pagina-principal__texto {
+    font-size: 0.9em; /* Tamaño base para el texto del footer */
+    margin-bottom: 8px; /* Espacio entre los párrafos */
+}
+
+/* Modificadores para el texto del footer */
+.pie-pagina-principal__texto--creadores {
+    font-size: 1em; /* Un poco más grande para los nombres */
+    font-weight: 600;
+    margin-top: 10px; /* Un poco más de espacio sobre los nombres */
+}
+
+.pie-pagina-principal__texto--institucion {
+    font-size: 0.95em; /* Un tamaño similar al texto base */
+    margin-bottom: 15px; /* Más espacio antes de los íconos de redes sociales */
+}
+
+.pie-pagina-principal__redes-sociales {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px; /* Asegura espacio si los textos de arriba son muchos */
+}
+
+.pie-pagina-principal__enlace-social img {
+    height: 24px;
+    width: 24px;
+    transition: transform 0.3s ease;
+}
+
+.pie-pagina-principal__enlace-social img:hover {
+    transform: scale(1.1);
+}
+
+
+/* --- DISEÑO RESPONSIVE (Media Queries) --- */
+
+/* Para dispositivos pequeños (móviles) */
+@media (max-width: 767px) {
+    .encabezado-principal__logo {
+        font-size: 1.5em;
+    }
+
+    .navegacion-principal {
+        position: absolute;
+        top: var(--altura-encabezado); /* Debajo del encabezado */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-fondo-oscuro);
+        flex-direction: column;
+        padding: 20px 0;
+        transform: translateX(-100%); /* Oculto por defecto */
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    .navegacion-principal--abierto {
+        transform: translateX(0); /* Visible */
+    }
+
+    .navegacion-principal__lista {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navegacion-principal__item {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .navegacion-principal__enlace {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.1em;
+    }
+
+    .encabezado-principal__boton-menu {
+        display: block; /* Muestra el botón de menú */
+    }
+
+    .seccion-principal {
+        padding: 100px 0;
+        min-height: auto; /* Ajusta la altura para móviles */
+    }
+
+    .seccion-principal__titulo {
+        font-size: 2.5em;
+    }
+
+    .seccion-principal__subtitulo {
+        font-size: 1.1em;
+    }
+
+    .seccion-informacion {
+        padding: 60px 0;
+    }
+
+    .seccion-informacion__titulo {
+        font-size: 2em;
+    }
+
+    .seccion-informacion__descripcion {
+        font-size: 1em;
+    }
+
+    .cuadrilla-contenido {
+        grid-template-columns: 1fr; /* Siempre una columna en móviles */
+    }
+
+    .seccion-imagen {
+        height: 250px; /* Menor altura en móviles */
+    }
+    .seccion-imagen__leyenda {
+        font-size: 1.8em;
+    }
+
+    .seccion-llamada-accion {
+        padding: 80px 0;
+    }
+
+    .seccion-llamada-accion__titulo {
+        font-size: 2.2em;
+    }
+
+    .seccion-llamada-accion__texto {
+        font-size: 1.1em;
+    }
+}
+
+/* Para tablets y pantallas medianas */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .seccion-principal__titulo {
+        font-size: 3em;
+    }
+
+    .seccion-informacion__titulo {
+        font-size: 2.2em;
+    }
+    .seccion-imagen__leyenda {
+        font-size: 2em;
+    }
+}
+
+
+/* --- ESTILOS ESPECÍFICOS DEL QUIZ (seccion-principal-quiz) --- */
+
+.seccion-principal-quiz {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-fondo-claro); /* Fondo claro para el quiz */
+    min-height: calc(100vh - var(--altura-encabezado) - 100px); /* Ajusta altura para footer */
+    display: flex; /* Para centrar el contenedor del quiz */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccion-principal-quiz__titulo {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--color-primario);
+    font-weight: 700;
+}
+
+.seccion-principal-quiz__subtitulo {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: var(--color-texto-oscuro);
+}
+
+.quiz-contenedor {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.quiz-pregunta {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.quiz-pregunta__numero {
+    font-size: 1.1em;
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.quiz-pregunta__texto {
+    font-size: 1.6em;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.quiz-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quiz-opciones__boton {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid var(--color-secundario);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--color-texto-oscuro);
+    font-size: 1.1em;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-opciones__boton:hover {
+    background-color: var(--color-fondo-claro);
+    border-color: var(--color-primario);
+}
+
+/* Estados de las opciones */
+.quiz-opciones__boton--seleccionado {
+    background-color: var(--color-secundario);
+    color: var(--color-texto-claro);
+    border-color: var(--color-primario);
+}
+
+.quiz-opciones__boton--correcto {
+    background-color: #4CAF50; /* Verde para respuesta correcta */
+    color: var(--color-texto-claro);
+    border-color: #388E3C;
+}
+
+.quiz-opciones__boton--incorrecto {
+    background-color: #F44336; /* Rojo para respuesta incorrecta */
+    color: var(--color-texto-claro);
+    border-color: #D32F2F;
+}
+
+/* Retroalimentación */
+.quiz-retroalimentacion {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.6;
+    border: 1px solid transparent; /* Para que ocupe espacio y no salte el layout */
+    min-height: 80px; /* Altura mínima para el feedback */
+}
+
+.quiz-retroalimentacion--correcta {
+    background-color: #E8F5E9; /* Verde muy claro */
+    border-color: #A5D6A7; /* Verde claro */
+    color: #2E7D32; /* Texto verde oscuro */
+}
+
+.quiz-retroalimentacion--incorrecta {
+    background-color: #FFEBEE; /* Rojo muy claro */
+    border-color: #EF9A9A; /* Rojo claro */
+    color: #C62828; /* Texto rojo oscuro */
+}
+
+/* Controles del quiz */
+.quiz-controles {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quiz-controles__boton {
+    padding: 12px 30px;
+    font-size: 1.1em;
+}
+
+.quiz-controles__boton--oculto {
+    display: none;
+}
+
+/* Resultado final */
+.quiz-resultado {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: var(--color-fondo-claro);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.quiz-resultado--oculto {
+    display: none;
+}
+
+.quiz-resultado__titulo {
+    font-size: 2em;
+    color: var(--color-primario);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.quiz-resultado__texto {
+    font-size: 1.5em;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 10px;
+}
+
+.quiz-resultado__mensaje {
+    font-size: 1.2em;
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+
+
+/* --- Responsive para Quiz --- */
+@media (max-width: 767px) {
+    .seccion-principal-quiz {
+        padding: 40px 0;
+    }
+    .seccion-principal-quiz__titulo {
+        font-size: 2em;
+    }
+    .seccion-principal-quiz__subtitulo {
+        font-size: 1em;
+    }
+    .quiz-contenedor {
+        padding: 20px;
+    }
+    .quiz-pregunta__texto {
+        font-size: 1.3em;
+    }
+    .quiz-opciones__boton {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+    .quiz-retroalimentacion {
+        font-size: 0.95em;
+        padding: 15px;
+    }
+    .quiz-controles__boton {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .quiz-resultado__titulo {
+        font-size: 1.8em;
+    }
+    .quiz-resultado__texto {
+        font-size: 1.3em;
+    }
+    .quiz-resultado__mensaje {
+        font-size: 1em;
+    }
+}

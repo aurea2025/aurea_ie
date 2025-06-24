@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea - Video sobre Inteligencia Emocional</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/video.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <div class="encabezado-principal__contenedor contenedor">
+            <div class="encabezado-principal__logo">
+                <img src="img/aurea-logo.png" alt="Logo de Aurea" class="encabezado-principal__logo-imagen">
+                <span class="encabezado-principal__logo-texto">Aurea</span>
+            </div>
+            <nav class="navegacion-principal">
+                <ul class="navegacion-principal__lista">
+                    <li class="navegacion-principal__item"><a href="index.html#inicio" class="navegacion-principal__enlace">Inicio</a></li>
+                    <li class="navegacion-principal__item"><a href="video.html" class="navegacion-principal__enlace">Video</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#analisis-etr" class="navegacion-principal__enlace">Análisis ETR</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#importancia" class="navegacion-principal__enlace">Importancia</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#mitos" class="navegacion-principal__enlace">Mitos y Realidades</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#desarrollo-beneficios" class="navegacion-principal__enlace">Desarrollo y Beneficios</a></li>
+                    <li class="navegacion-principal__item"><a href="index.html#ie-educacion" class="navegacion-principal__enlace">IE en la Educación</a></li>
+                    <li class="navegacion-principal__item"><a href="quizzes.html" class="navegacion-principal__enlace">Quizzes</a></li>
+                </ul>
+            </nav>
+            <button class="encabezado-principal__boton-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="video-section">
+            <div class="video-section__contenedor contenedor">
+                <h1 class="video-section__titulo">Explorando la Inteligencia Emocional</h1>
+                <p class="video-section__descripcion">
+                    La inteligencia emocional es más que un concepto; es la clave para navegar la complejidad de la vida moderna. Este video va más allá de los fundamentos para mostrarte cómo esta habilidad crítica moldea tu futuro, tus decisiones y tu bienestar integral
+                </p>
+
+                <div class="video-section__contenedor-video">
+                <iframe 
+                    class="video-section__iframe"
+                    src="https://www.youtube.com/embed/7H1Nmv8ntSI" 
+                    title="Video sobre Inteligencia Emocional" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+                <div class="video-section__puntos-clave">
+                    <h2 class="video-section__subtitulo">Puntos Clave del Video</h2>
+                    <ul class="video-section__lista">
+                        <li class="video-section__item">El "secuestro neuronal": cómo las emociones pueden tomar el control de nuestra parte racional.</li>
+                        <li class="video-section__item">La importancia de la empatía para reconocer las emociones en los demás.</li>
+                        <li class="video-section__item">La habilidad de manejar las relaciones interpersonales de forma efectiva.</li>
+                        <li class="video-section__item">Consejos prácticos para controlar emociones como la ira, la ansiedad y la tristeza.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina-principal">
+        <div class="pie-pagina-principal__contenedor contenedor">
+            <p class="pie-pagina-principal__texto">
+                &copy; 2025 Aurea. Todos los derechos reservados.
+            </p>
+            <p class="pie-pagina-principal__texto pie-pagina-principal__texto--creadores">
+                Proyecto desarrollado por: 
+                <a href="https://www.instagram.com/luiuzcategui/" class="pie-pagina-principal__enlace-social" aria-label="Facebook">Luiseli</a>   
+                <a href="#" class="pie-pagina-principal__enlace-social" aria-label="Facebook">Nicolas</a>   
+                <a href="https://www.instagram.com/carlosrivasp66/" class="pie-pagina-principal__enlace-social" aria-label="Facebook">Carlos</a>                  
+            </p>
+            <p class="pie-pagina-principal__texto pie-pagina-principal__texto--institucion">
+                Estudiantes de Quinto Año de Telemática de la E.T. "Máximo Toro"
+            </p>
+            <div class="pie-pagina-principal__redes-sociales">
+                <a href="#" class="pie-pagina-principal__enlace-social" aria-label="Facebook"><img src="img/icon-facebook.svg" alt="Facebook"></a>                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el menú responsive 
+        document.addEventListener('DOMContentLoaded', () => {
+            const botonMenu = document.querySelector('.encabezado-principal__boton-menu');
+            const navegacionPrincipal = document.querySelector('.navegacion-principal');
+
+            botonMenu.addEventListener('click', () => {
+                navegacionPrincipal.classList.toggle('navegacion-principal--abierto');
+                botonMenu.classList.toggle('encabezado-principal__boton-menu--activo');
+            });
+        });
+    </script>
+</body>
+</html>
